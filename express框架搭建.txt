@@ -1,0 +1,14 @@
+准备工作
+	npm install express -g
+	npm install express-generator -g
+
+创建express框架
+	express erp
+安装框架依赖		会自动安装erp/package.json中dependencies的项目
+	cd erp
+	npm install
+启动express
+	npm run start
+
+参考
+	https://www.jianshu.com/p/69e7f3734eb5
