@@ -1,13 +1,18 @@
-node + express ÒÔ¼°ÏîÄ¿ÓÃµ½µÄÈí¼şµÄ¼òµ¥½éÉÜ
+node + express ä»¥åŠé¡¹ç›®ç”¨åˆ°çš„è½¯ä»¶çš„ç®€å•ä»‹ç»
 	https://www.jianshu.com/u/bdde2378d666
 
-JavaScript Standard Style standard¹æ·¶
+JavaScript Standard Style standardè§„èŒƒ
 	https://standardjs.com/readme-zhcn.html
 
-npm install ³öÏÖrollbackFailedOptionalÊ±Ö´ĞĞÒÔÏÂ²Ù×÷
+npm install å‡ºç°rollbackFailedOptionalæ—¶æ‰§è¡Œä»¥ä¸‹æ“ä½œ
 	npm config rm proxy
 	npm config rm https-proxy
 	npm config set registry http://registry.npmjs.org
-²Î¿¼
+å‚è€ƒ
 	https://stackoverflow.com/questions/46011546/npm-install-error-rollbackfailedoptional
 
+ubuntu å®‰è£…æŒ‡å®šç‰ˆæœ¬
+	sudo apt-get purge nodejs npm
+	v=10
+	curl -sL https://deb.nodesource.com/setup_$v.x | sudo -E bash -
+	sudo apt-get install -y nodejs
