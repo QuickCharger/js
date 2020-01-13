@@ -22,3 +22,5 @@ apt install npm				// npm独立于nodejs 已经作为一个独立的软件存在
 npm install -g npm@latest	// 通过npm更新npm
 npm install -g n			// n是npm中一个工具，管理nodejs版本
 n stable|lts|latest			// 安装nodejs 稳定版|lts版|最新版
+
+npm info pm2				// 查看pm2版本
