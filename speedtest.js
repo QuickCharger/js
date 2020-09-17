@@ -11,7 +11,7 @@ let steps = {
 			host:"127.0.0.1", port:8883, SpeedSize:[0,0, 1000000, 1000000], next:{
 				host:"127.0.0.1", port:1234}}}}
 
-let fSpeedLog = (from, to, siz, ns) => `${from} => ${to.host}:${to.port}\t package size ${(siz<1000 ? siz : siz < 1000000 ? siz / 1000 : siz / 1000000).toFixed().toString().padStart(4) + (siz<1000 ? " B" : siz < 1000000 ? "KB" : "MB")}   cost ${(ns*1000).toFixed(2).padStart(8)}ms   speed ${(siz / ns / 1000).toFixed(2).padStart(8)}KB/s`
+let fSpeedLog = (from, to, siz, sec) => `${from} => ${to.host}:${to.port}\t package size ${(siz<1000 ? siz : siz < 1000000 ? siz / 1000 : siz / 1000000).toFixed().toString().padStart(4) + (siz<1000 ? " B" : siz < 1000000 ? "KB" : "MB")}   cost ${(sec*1000).toFixed(2).padStart(8)}ms   speed ${(siz / sec / 1000).toFixed(2).padStart(8)}KB/s`
 let fRandString_Fast = (a_Length) => Crypto.randomBytes(a_Length*0.75 + 0.25).toString('base64').slice(0, a_Length)
 
 // init
