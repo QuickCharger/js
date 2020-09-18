@@ -133,6 +133,7 @@ let fDoSpeedTest = async (info = steps, previousSocket = null) => {
 			try{
 				let ret = await wait_sync(packInterval, TestSpeed, param)
 				previousSocket && previousSocket.write(fSerialize(MsgType_Info_Ret, ret))
+				console.log(ret)
 			} catch(e) {
 				console.log(`do ${JSON.stringify(param)} failed. reason ${e}`)
 				previousSocket && previousSocket.end(fSerialize(MsgType_Info_Ret, e))
