@@ -1,20 +1,20 @@
-// ÅĞ¶ÏÊÇ·ñ´æÔÚÄ³¸ö±äÁ¿
+ï»¿// åˆ¤æ–­æ˜¯å¦å­˜åœ¨æŸä¸ªå˜é‡
 if(typeof a === "undefined") {
 	console.log("a undefined")
 } else {
 	console.log("a defined")
 }
 
-// Ä¬ÈÏÖµµÄĞ´·¨£¬ÆÕÍ¨±äÁ¿
+// é»˜è®¤å€¼çš„å†™æ³•ï¼Œæ™®é€šå˜é‡
 let r1 = typeof a !== "undefined" ? a : "3000"
 console.log("result = " + r1)
 
-// Ä¬ÈÏÖµµÄĞ´·¨£¬Àà³ÉÔ±
+// é»˜è®¤å€¼çš„å†™æ³•ï¼Œç±»æˆå‘˜
 obj={}
 let r2 = obj.a || '3000'
 console.log("result = " + r2)
 
-//ÔÚ´úÂë¿éÄÚ£¬Ê¹ÓÃletÃüÁîÉùÃ÷±äÁ¿Ö®Ç°£¬¸Ã±äÁ¿¶¼ÊÇ²»¿ÉÓÃµÄ
+//åœ¨ä»£ç å—å†…ï¼Œä½¿ç”¨letå‘½ä»¤å£°æ˜å˜é‡ä¹‹å‰ï¼Œè¯¥å˜é‡éƒ½æ˜¯ä¸å¯ç”¨çš„
 let tmp = 123;
 if (true) {
   // tmp = 'abc';   // ReferenceError
@@ -26,14 +26,14 @@ if (true) {
   console.log(a + " " + b + " " + c)
 }
 
-asyncº¯ÊıÊµ¼Ê·µ»ØPromise
-	Èç¹û·µ»ØµÄÊÇ·ÇPromiseÒ²»áÍ¨¹ıPromise.resolve()·â×°³ÉPromise
-	Èç¹ûÎŞreturnÔò×Ô¶¯·µ»ØPromise.resolve(undefined)
-	Èç¹ûº¯Êı·µ»ØµÄ¾ÍÊÇPromise Ôòº¯ÊıÇ°Ãæ²»ÓÃ¼Óasync
-PromiseÖĞµÄº¯Êı»áÁ¢¼´Ö´ĞĞ
-awaitÖ´ĞĞ²½Öè£¨²»ÂÛºóÃæµÄ±í´ïÊ½ÊÇ·ñÊÇPromise£©
-	1. Ö´ĞĞawaitºóÃæµÄ±í´ïÊ½
-	2. Ìø³öawait£¬´Óµ÷ÓÃÕß´¦¼ÌĞøÖ´ĞĞ
-	3. PromiseÖ´ĞĞÁËresolveºó ´Óawait´¦¼ÌĞøÖ´ĞĞ¡£
-		Èç¹ûPromiseÒ»Ö±²»Ö´ĞĞresolve£¬ÔòÒ»Ö±²»»áÖ´ĞĞawaitºóÃæµÄ´úÂë
-		Èç¹ûawaitºóÃæ²»ÊÇPromise£¬ÔòÖ´ĞĞÍê2ºó Á¢¼´Ö´ĞĞ3£¨²»µÈ´ıPromiseÖ´ĞĞresolve£©
+asyncå‡½æ•°å®é™…è¿”å›Promise
+	å¦‚æœè¿”å›çš„æ˜¯éPromiseä¹Ÿä¼šé€šè¿‡Promise.resolve()å°è£…æˆPromise
+	å¦‚æœæ— returnåˆ™è‡ªåŠ¨è¿”å›Promise.resolve(undefined)
+	å¦‚æœå‡½æ•°è¿”å›çš„å°±æ˜¯Promise åˆ™å‡½æ•°å‰é¢ä¸ç”¨åŠ async
+Promiseä¸­çš„å‡½æ•°ä¼šç«‹å³æ‰§è¡Œ
+awaitæ‰§è¡Œæ­¥éª¤ï¼ˆä¸è®ºåé¢çš„è¡¨è¾¾å¼æ˜¯å¦æ˜¯Promiseï¼‰
+	1. æ‰§è¡Œawaitåé¢çš„è¡¨è¾¾å¼
+	2. è·³å‡ºawaitï¼Œä»è°ƒç”¨è€…å¤„ç»§ç»­æ‰§è¡Œ
+	3. Promiseæ‰§è¡Œäº†resolveå ä»awaitå¤„ç»§ç»­æ‰§è¡Œã€‚
+		å¦‚æœPromiseä¸€ç›´ä¸æ‰§è¡Œresolveï¼Œåˆ™ä¸€ç›´ä¸ä¼šæ‰§è¡Œawaitåé¢çš„ä»£ç 
+		å¦‚æœawaitåé¢ä¸æ˜¯Promiseï¼Œåˆ™æ‰§è¡Œå®Œ2å ç«‹å³æ‰§è¡Œ3ï¼ˆä¸ç­‰å¾…Promiseæ‰§è¡Œresolveï¼‰
