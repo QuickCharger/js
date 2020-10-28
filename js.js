@@ -25,3 +25,15 @@ if (true) {
   let [a,b,c] = [1,2,3]
   console.log(a + " " + b + " " + c)
 }
+
+async函数实际返回Promise
+	如果返回的是非Promise也会通过Promise.resolve()封装成Promise
+	如果无return则自动返回Promise.resolve(undefined)
+	如果函数返回的就是Promise 则函数前面不用加async
+Promise中的函数会立即执行
+await执行步骤（不论后面的表达式是否是Promise）
+	1. 执行await后面的表达式
+	2. 跳出await，从调用者处继续执行
+	3. Promise执行了resolve后 从await处继续执行。
+		如果Promise一直不执行resolve，则一直不会执行await后面的代码
+		如果await后面不是Promise，则执行完2后 立即执行3（不等待Promise执行resolve）
