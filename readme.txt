@@ -23,9 +23,19 @@ apt install npm				// npm独立于nodejs 已经作为一个独立的软件存在
 npm install -g npm@latest	// 通过npm更新npm
 npm install -g n			// n是npm中一个工具，管理nodejs版本
 n stable|lts|latest			// 安装nodejs 稳定版|lts版|最新版
-
 npm info pm2				// 查看pm2版本
 
 pm2自动启动
 pm2 save
 pm2 startup
+
+安装express
+准备工作
+	npm install express -g
+	npm install express-generator -g
+创建express框架
+	express erp
+启动express
+	npm run start
+参考
+	https://www.jianshu.com/p/69e7f3734eb5
