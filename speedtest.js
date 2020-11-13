@@ -77,7 +77,6 @@ setTimeout(fDoSpeedTest, 1000);
 	})
 })();
 
-
 class TcpBufRecv {
 	constructor() {
 		this.Buf = new Buffer.alloc(0)
@@ -108,6 +107,7 @@ class TcpBufRecv {
 		}
 	}
 }
+
 // 4 + 1 + context
 let fSerialize = (type, context = '') => {
 	let bufencode = Buffer.alloc(5, "binary")
