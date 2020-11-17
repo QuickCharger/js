@@ -39,3 +39,6 @@ pm2 startup
 	npm run start
 参考
 	https://www.jianshu.com/p/69e7f3734eb5
+
+安装github
+npm install git+https://github.com/QuickCharger/easy.git
