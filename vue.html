@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+
+
+/*<br>
+* 参考于： <a href="http://www.runoob.com/vue2"  target="opentype">www.runoob.com/vue2</a> <br>
+* 简单示例 <br>
+*/
+<div id="vue_init">
+	<h1>str1 : {{str1}}</h1>	<!-- {{ }} 用于输出对象属性和函数返回值 -->
+	<h1>Counter {{counter}}</h1>		<!-- 调用methods内的函数  调用时有括号 -->
+	<h1>{{details()}}</h1>		<!-- 调用methods内的函数  调用时有括号 -->
+	<h1>{{constantdetails}}</h1><!-- 调用computed内的函数 调用时无括号 -->
+	<h1>{{constantdetailsUseCounter}}</h1>
+</div>
+<script type="text/javascript">
+	let vueInit = new Vue({
+		el: '#vue_init',		// el对应id
+		data: {
+			str1: "第一个教程",
+			counter: "10000",
+			watchedcounter:"watched counter"
+		},
+		methods: {				// methods 在重新渲染的时候，函数总会重新调用执行
+			details: function() {
+				return `methods内的随机数 random int ${Math.ceil(Math.random()*1000)}`;
+			},
+		},
+		computed: {				// computed 基于它的依赖缓存，只有相关依赖发生改变时才会重新取值
+			constantdetails: function () {
+				return `computed内的随机数 random int ${Math.ceil(Math.random()*1000)}`;
+			},
+			constantdetailsUseCounter: function () {	// counter的每次改变都会调用该函数
+				return `computed内的随机数 使用到了Counter Counter+1= ${this.counter+1}`;
+			}
+		},
+	})
+	setInterval(()=>{
+		vueInit.$data.counter = +vueInit.$data.counter + 1		// Vue 实例内部的实例属性与方法都有前缀 $，以便与用户定义的属性区分开
+	}, 500)
+</script>
+
+
+/*<br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-computed.html"  target="opentype">www.runoob.com/vue2/vue-computed.html</a> <br>
+* 高级的computed <br>
+*/
+
+
+
+
+<div id="vue_det">
+</div>
+<script type="text/javascript">
+	let v = new Vue({
+		el: '#vue_det',		// el对应id
+		data: {
+			site: "菜鸟教程",
+			url: "www.runoob.com",
+			counter: "10000",
+			watchedcounter:"watched counter"
+		},
+		watch: {
+			counter:(v)=>{
+				console.log(`new counter value ${v}`)
+			}
+		}
+	})
+	v.$watch('counter', (newvalue, oldvalue) => {	// 第二种监听方式
+		v.$data.watchedcounter = `newvalue ${newvalue}. oldvalue ${oldvalue}`
+	})
+</script>
+
+<style>
+#vue_det {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 60px;
+}
+</style>
+
+
+
+
+
+
+<div id="testvfunction">
+	<p v-if="cansee">现在你看到我了</p>		// v-if 的功能是 如果满足条件就渲染这部分
+	<ol v-for="site in forarray">
+		{{ site.name }}
+	</ol>
+	<li v-for="(value, key, index) in forobject">
+		{{index}} : {{key}} : {{value}}
+	</li>
+</div>
+
+<script>
+new Vue({
+	el: '#testvfunction',
+	data: {
+		cansee: true,
+		forarray:[
+			{ name: 'Runoob' },
+			{ name: 'Google' },
+			{ name: 'Taobao' }
+		],
+		forobject:{
+			name: '菜鸟教程',
+			url: 'http://www.runoob.com',
+			slogan: '学的不仅是技术，更是梦想！'
+		}
+	}
+})
+</script>
+
+
+
+
+参考于： <a href="https://www.runoob.com/vue2/vue-template-syntax.html"  target="opentype">https://www.runoob.com/vue2/vue-template-syntax.html</a> <br>
+v- todo////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+https://www.runoob.com/vue2/vue-if.html  v-if
+https://www.runoob.com/vue2/vue-loop.html v-for
+
+
+
+
+
+
+</body>
+</html>
+
+
+// https://www.runoob.com/vue2/vue-loop.html
