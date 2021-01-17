@@ -9,15 +9,15 @@
 
 
 /*<br>
-* 参考于： <a href="http://www.runoob.com/vue2"  target="opentype">www.runoob.com/vue2</a> <br>
 * 简单示例 <br>
+* 参考于： <a href="http://www.runoob.com/vue2"  target="opentype">www.runoob.com/vue2</a> <br>
 */
 <div id="vue_init">
-	<h1>str1 : {{str1}}</h1>	<!-- {{ }} 用于输出对象属性和函数返回值 -->
-	<h1>Counter {{counter}}</h1>		<!-- 调用methods内的函数  调用时有括号 -->
-	<h1>{{details()}}</h1>		<!-- 调用methods内的函数  调用时有括号 -->
-	<h1>{{constantdetails}}</h1><!-- 调用computed内的函数 调用时无括号 -->
-	<h1>{{constantdetailsUseCounter}}</h1>
+	<h3>str1 : {{str1}}</h3>		<!-- {{ }} 用于输出对象属性和函数返回值 -->
+	<h3>Counter {{counter}}</h3>	<!-- 调用methods内的函数  调用时有括号 -->
+	<h3>{{details()}}</h3>			<!-- 调用methods内的函数  调用时有括号 -->
+	<h3>{{constantdetails}}</h3>	<!-- 调用computed内的函数 调用时无括号 -->
+	<h3>{{constantdetailsUseCounter}}</h3>
 </div>
 <script type="text/javascript">
 	let vueInit = new Vue({
@@ -48,34 +48,82 @@
 
 
 /*<br>
-* 参考于： <a href="https://www.runoob.com/vue2/vue-computed.html"  target="opentype">www.runoob.com/vue2/vue-computed.html</a> <br>
 * 高级的computed <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-computed.html"  target="opentype">www.runoob.com/vue2/vue-computed.html</a> <br>
 */
-
-
-
-
-<div id="vue_det">
+<div id="computed_advanced">
+	<h3>computed_get_set : {{computed_get_set}}</h3>
 </div>
 <script type="text/javascript">
-	let v = new Vue({
-		el: '#vue_det',		// el对应id
+	let vueComputedAdvance = new Vue({
+		el: '#computed_advanced',
 		data: {
-			site: "菜鸟教程",
-			url: "www.runoob.com",
-			counter: "10000",
-			watchedcounter:"watched counter"
+			str1: "this is a old computed_set",
 		},
-		watch: {
-			counter:(v)=>{
-				console.log(`new counter value ${v}`)
+		computed: {
+			computed_get_set: {
+				get: function () {			// 一定不能用 ()=>{} 的方式
+					return `${this.str1}`
+				},
+				set: function (v) {			// 一定不能用 ()=>{} 的方式
+					this.str1 = v
+				}
+			}
+		},
+	})
+	setTimeout(()=>{vueComputedAdvance.computed_get_set = "this is a new computed_set"}, 1000)
+</script>
+
+
+/*<br>
+* 监听 <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-watch.html"  target="opentype">www.runoob.com/vue2/vue-watch.html</a> <br>
+*/
+<div id="vue_watch">
+	千米 : <input type = "text" v-model = "kilometers">
+	米 : <input type = "text" v-model = "meters">
+	<h3>{{watchlog}}</h3>
+	千米 : <input type = "text" v-model = "kilometers2">
+	米 : <input type = "text" v-model = "meters2">
+	<h3>{{watchlog2}}</h3>
+</div>
+<script type="text/javascript">
+	let vueWatch = new Vue({
+		el: '#vue_watch',
+		data: {
+			kilometers : 0,
+			meters:0,
+			watchlog:`千米 0 米 0`,
+			kilometers2 : 0,
+			meters2:0,
+			watchlog2:`千米 0 米 0`,
+		},
+		watch: {		// 第一种监听方式
+			kilometers: function(val) {
+				console.log(`kilo ${val}`)
+				this.meters = val * 1000
+				this.watchlog = `千米 ${this.kilometers} 米 ${this.meters}`
+			},
+			meters: function(val) {
+				console.log(`meter ${val}`)
+				this.kilometers = val / 1000
+				this.watchlog = `千米 ${this.kilometers} 米 ${this.meters}`
 			}
 		}
 	})
-	v.$watch('counter', (newvalue, oldvalue) => {	// 第二种监听方式
-		v.$data.watchedcounter = `newvalue ${newvalue}. oldvalue ${oldvalue}`
+	vueWatch.$watch('kilometers2', function (newValue, oldValue) {		// 第二种监听方式，会引起kilometers2和meter2的不断重复！！！
+		console.log(`kilometers new ${newValue} old ${oldValue}`)
+		vueWatch.meters2 = vueWatch.kilometers2 * 1000
+		vueWatch.watchlog2 = `千米new ${newValue} 千米old ${oldValue}`
 	})
+	// vueWatch.$watch('meters2', function (newValue, oldValue) {
+	// 	console.log(`meters new ${newValue} old ${oldValue}`)
+	// 	vueWatch.kilometers2 = vueWatch.meters2 * 1000
+	// 	vueWatch.watchlog2 = `米new ${newValue} 米old ${oldValue}`
+	// })
 </script>
+
+
 
 <style>
 #vue_det {
@@ -93,11 +141,61 @@
 
 
 
-<div id="testvfunction">
-	<p v-if="cansee">现在你看到我了</p>		// v-if 的功能是 如果满足条件就渲染这部分
-	<ol v-for="site in forarray">
+/*<br>
+* v-on 事件处理器 <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-events.html"  target="opentype">www.runoob.com/vue2/vue-events.html</a> <br>
+*/
+<div id="listenAction">
+	<button v-on:click="counter+=1">点一下加一下</button>		<!-- 第一种方法 事件直接写在v-on里面 -->
+	<h3>按钮被点击了{{counter}}次</h3>
+	<button v-on:click="addCounter()">点一下加一下</button>		<!-- 第二种方法 调用 -->
+	<h3>按钮被点击了{{counter2}}次</h3>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el: '#listenAction',
+		data: {
+			counter:0,
+			counter2:100
+		},
+		methods: {
+			addCounter : function () {
+				this.counter2 += 1
+			}
+		}
+	})
+</script>
+
+
+/*<br>
+* v-if <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-if.html"  target="opentype">www.runoob.com/vue2/vue-if.html</a> <br>
+*/
+<div id="testvif">
+	<p>rand {{rand}}</p>
+	<p v-if="rand > 0.6">rand > 0.6 && rand < 1</p>		<!-- v-if 的功能是 如果满足条件就渲染这部分 -->
+	<p v-else-if="rand > 0.3 && rand < 0.6">rand > 0.3 && rand < 0.6</p>
+	<p v-else>rand > 0 && rand < 0.3</p>
+</div>
+
+<script>
+new Vue({
+	el: '#testvif',
+	data: {
+		rand: Math.random(),
+	}
+})
+</script>
+
+
+/*<br>
+* v-for <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-loop.html"  target="opentype">www.runoob.com/vue2/vue-loop.html</a> <br>
+*/
+<div id="testvloop">
+	<li v-for="site in forarray">
 		{{ site.name }}
-	</ol>
+	</li>
 	<li v-for="(value, key, index) in forobject">
 		{{index}} : {{key}} : {{value}}
 	</li>
@@ -105,9 +203,8 @@
 
 <script>
 new Vue({
-	el: '#testvfunction',
+	el: '#testvloop',
 	data: {
-		cansee: true,
 		forarray:[
 			{ name: 'Runoob' },
 			{ name: 'Google' },
@@ -127,9 +224,8 @@ new Vue({
 
 参考于： <a href="https://www.runoob.com/vue2/vue-template-syntax.html"  target="opentype">https://www.runoob.com/vue2/vue-template-syntax.html</a> <br>
 v- todo////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-https://www.runoob.com/vue2/vue-if.html  v-if
-https://www.runoob.com/vue2/vue-loop.html v-for
-
+https://www.runoob.com/vue2/vue-class-style.html v-bind
+https://www.runoob.com/vue2/vue-forms.html v-model
 
 
 
@@ -137,6 +233,3 @@ https://www.runoob.com/vue2/vue-loop.html v-for
 
 </body>
 </html>
-
-
-// https://www.runoob.com/vue2/vue-loop.html
