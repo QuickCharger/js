@@ -124,7 +124,6 @@
 </script>
 
 
-
 <style>
 #vue_det {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -137,18 +136,15 @@
 </style>
 
 
-
-
-
-
 /*<br>
 * v-on 事件处理器 <br>
+* 缩写为 @ <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-events.html"  target="opentype">www.runoob.com/vue2/vue-events.html</a> <br>
 */
 <div id="listenAction">
 	<button v-on:click="counter+=1">点一下加一下</button>		<!-- 第一种方法 事件直接写在v-on里面 -->
 	<h3>按钮被点击了{{counter}}次</h3>
-	<button v-on:click="addCounter()">点一下加一下</button>		<!-- 第二种方法 调用 -->
+	<button @click="addCounter()">点一下加一下</button>		<!-- 第二种方法 调用 -->
 	<h3>按钮被点击了{{counter2}}次</h3>
 </div>
 <script type="text/javascript">
@@ -220,16 +216,61 @@ new Vue({
 </script>
 
 
+/*<br>
+* v-bind <br>
+* v-bind:class todo<br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-class-style.html"  target="opentype">www.runoob.com/vue2/vue-class-style.html</a> <br>
+*/
+<div id="testbind">
+	<div v-bind:style="{color: bindStyleColor, fontSize: bindStyleFontSize+'px'}">bind:style教程</div>
+	<div v-bind:style="bindStyle">bind:style教程2</div>
+</div>
+
+<script>
+new Vue({
+	el: "#testbind",
+	data:{
+		bindStyleColor:"green",
+		bindStyleFontSize:20,
+		bindStyle:{
+			color: "green",
+			fontSize: '30px'
+		}
+	}
+})
+</script>
+
+
+/*<br>
+* v-model <br>
+* 参考于： <a href="https://www.runoob.com/vue2/vue-forms.html"  target="opentype">www.runoob.com/vue2/vue-forms.html</a> <br>
+*/
+<div id="testmodel">
+	<p style="display: inline">input 元素</p> <input v-model="message" placeholder="编辑框" style="display: inline;"> <p style="display: inline;">消息是 {{message}}</p>
+	<p>TEXTAREA 元素</p> <p>	// todo
+</div>
+
+<script>
+new Vue({
+	el: "#testmodel",
+	data:{
+		message:""
+	}
+})
+</script>
+
 
 
 参考于： <a href="https://www.runoob.com/vue2/vue-template-syntax.html"  target="opentype">https://www.runoob.com/vue2/vue-template-syntax.html</a> <br>
 v- todo////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-https://www.runoob.com/vue2/vue-class-style.html v-bind
-https://www.runoob.com/vue2/vue-forms.html v-model
-
-
-
-
+组件
+组件-自定义事件
+自定义指令
+路由
+过度 动画
+混入
+ajax
+接口相应
 
 </body>
 </html>
