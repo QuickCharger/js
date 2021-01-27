@@ -261,15 +261,30 @@ new Vue({
 * 参考于： <a href="https://www.runoob.com/vue2/vue-forms.html"  target="opentype">www.runoob.com/vue2/vue-forms.html</a> <br>
 */
 <div id="testmodel">
-	<p style="display: inline">input 元素</p> <input v-model="message" placeholder="编辑框" style="display: inline;"> <p style="display: inline;">消息是 {{message}}</p>
-	<p>TEXTAREA 元素</p> <p>	// todo
+	<p style="display: inline">input 元素</p> <input v-model="message" placeholder="编辑框" style="display: inline;"></input> {{message}}</br>
+	<p style="display: inline">TEXTAREA 元素</p> <textarea v-model="message2" placeholder="多行输入"></textarea> {{message2}}</br>
+	<div>
+		单个复选框：
+		<input type="checkbox" id="testcheckbox" v-model="testcheckbox"></input> <label for="testcheckbox">{{testcheckbox}}</label></br>
+	</div>
+	<div>
+		多个复选框：
+		<input type="checkbox" id="check1" value="vCheck1" v-model="testcheckboxmulti"> <label for="check1">check1</label>
+		<input type="checkbox" id="check2" value="vCheck2" v-model="testcheckboxmulti"> <label for="check2">check2</label>
+		<input type="checkbox" id="check3" value="vCheck3" v-model="testcheckboxmulti"> <label for="check3">check3</label>
+		{{testcheckboxmulti}}
+	</div>
+	// 单选按钮 todo
 </div>
 
 <script>
 new Vue({
 	el: "#testmodel",
 	data:{
-		message:""
+		message:"",
+		message2:"",
+		testcheckbox:false,
+		testcheckboxmulti:[]
 	}
 })
 </script>
