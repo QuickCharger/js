@@ -13,11 +13,11 @@
 * 参考于： <a href="http://www.runoob.com/vue2"  target="opentype">www.runoob.com/vue2</a> <br>
 */
 <div id="vue_init">
-	<h3>str1 : {{str1}}</h3>		<!-- {{ }} 用于输出对象属性和函数返回值 -->
-	<h3>Counter {{counter}}</h3>	<!-- 调用methods内的函数  调用时有括号 -->
-	<h3>{{details()}}</h3>			<!-- 调用methods内的函数  调用时有括号 -->
-	<h3>{{constantdetails}}</h3>	<!-- 调用computed内的函数 调用时无括号 -->
-	<h3>{{constantdetailsUseCounter}}</h3>
+	<div>str1 : {{str1}}</div>		<!-- {{ }} 用于输出对象属性和函数返回值 -->
+	<div>Counter {{counter}}</div>	<!-- 调用methods内的函数  调用时有括号 -->
+	<div>{{details()}}</div>			<!-- 调用methods内的函数  调用时有括号 -->
+	<div>{{constantdetails}}</div>	<!-- 调用computed内的函数 调用时无括号 -->
+	<div>{{constantdetailsUseCounter}}</div>
 </div>
 <script type="text/javascript">
 	let vueInit = new Vue({
@@ -47,12 +47,13 @@
 </script>
 
 
+<br>
 /*<br>
 * 高级的computed <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-computed.html"  target="opentype">www.runoob.com/vue2/vue-computed.html</a> <br>
 */
 <div id="computed_advanced">
-	<h3>computed_get_set : {{computed_get_set}}</h3>
+	<div>computed_get_set : {{computed_get_set}}</div>
 </div>
 <script type="text/javascript">
 	let vueComputedAdvance = new Vue({
@@ -75,17 +76,22 @@
 </script>
 
 
+<br>
 /*<br>
 * 监听 <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-watch.html"  target="opentype">www.runoob.com/vue2/vue-watch.html</a> <br>
 */
 <div id="vue_watch">
-	千米 : <input type = "text" v-model = "kilometers">
-	米 : <input type = "text" v-model = "meters">
-	<h3>{{watchlog}}</h3>
-	千米 : <input type = "text" v-model = "kilometers2">
-	米 : <input type = "text" v-model = "meters2">
-	<h3>{{watchlog2}}</h3>
+	<div>
+		<div style="display: inline;">千米 :</div> <input type = "text" v-model = "kilometers">
+		<div style="display: inline;">米 :</div> <input type = "text" v-model = "meters">
+		<div style="display: inline;">{{watchlog}}</div>
+	</div>
+	<div>
+		<div style="display: inline;">千米 :</div>  <input type = "text" v-model = "kilometers2">
+		<div style="display: inline;">米 :</div>  <input type = "text" v-model = "meters2">
+		<div style="display: inline;">{{watchlog2}}</div>
+	</div>
 </div>
 <script type="text/javascript">
 	let vueWatch = new Vue({
@@ -136,16 +142,21 @@
 </style>
 
 
+<br>
 /*<br>
 * v-on 事件处理器 <br>
 * 缩写为 @ <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-events.html"  target="opentype">www.runoob.com/vue2/vue-events.html</a> <br>
 */
 <div id="listenAction">
-	<button v-on:click="counter+=1">点一下加一下</button>		<!-- 第一种方法 事件直接写在v-on里面 -->
-	<h3>按钮被点击了{{counter}}次</h3>
-	<button @click="addCounter()">点一下加一下</button>		<!-- 第二种方法 调用 -->
-	<h3>按钮被点击了{{counter2}}次</h3>
+	<div>
+		<button v-on:click="counter+=1" style="display: inline;">点一下加一下</button>		<!-- 第一种方法 事件直接写在v-on里面 -->
+		<div style="display: inline;">按钮被点击了{{counter}}次</div>
+	</div>
+	<div>
+		<button @click="addCounter()" style="display: inline;">点一下加一下</button>		<!-- 第二种方法 调用 -->
+		<div style="display: inline;">按钮被点击了{{counter2}}次</div>
+	</div>
 </div>
 <script type="text/javascript">
 	new Vue({
@@ -163,15 +174,16 @@
 </script>
 
 
+<br>
 /*<br>
 * v-if <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-if.html"  target="opentype">www.runoob.com/vue2/vue-if.html</a> <br>
 */
 <div id="testvif">
-	<p>rand {{rand}}</p>
-	<p v-if="rand > 0.6">rand > 0.6 && rand < 1</p>		<!-- v-if 的功能是 如果满足条件就渲染这部分 -->
-	<p v-else-if="rand > 0.3 && rand < 0.6">rand > 0.3 && rand < 0.6</p>
-	<p v-else>rand > 0 && rand < 0.3</p>
+	<div>rand {{rand}}</div>
+	<div v-if="rand > 0.6">rand > 0.6 && rand < 1</div>		<!-- v-if 的功能是 如果满足条件就渲染这部分 -->
+	<div v-else-if="rand > 0.3 && rand < 0.6">rand > 0.3 && rand < 0.6</div>
+	<div v-else>rand > 0 && rand < 0.3</div>
 </div>
 
 <script>
@@ -184,6 +196,7 @@ new Vue({
 </script>
 
 
+<br>
 /*<br>
 * v-for <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-loop.html"  target="opentype">www.runoob.com/vue2/vue-loop.html</a> <br>
@@ -216,6 +229,7 @@ new Vue({
 </script>
 
 
+<br>
 /*<br>
 * v-bind <br>
 * v-bind:class todo<br>
@@ -241,6 +255,7 @@ new Vue({
 </script>
 
 
+<br>
 /*<br>
 * v-model <br>
 * 参考于： <a href="https://www.runoob.com/vue2/vue-forms.html"  target="opentype">www.runoob.com/vue2/vue-forms.html</a> <br>
