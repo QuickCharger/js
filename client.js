@@ -6,7 +6,12 @@ clientSocket1
 	console.log(`client close`)
 }).on('connect', ()=>{
 	console.log(`client connect`)
-	setTimeout(()=>{clientSocket1.write("qwer"); console.log("send qwer")}, 1000)
+	setTimeout(()=>{
+		if(clientSocket1.write("qwer"))
+			console.log("send qwer success")
+		else
+			console.log("send qwer failed")
+	}, 1000)
 	//clientSocket1.write("qwer")
 }).on('data', data =>{
 	console.log(`client data. send from server: ${data}`)
