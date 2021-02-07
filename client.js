@@ -6,7 +6,8 @@ clientSocket1
 	console.log(`client close`)
 }).on('connect', ()=>{
 	console.log(`client connect`)
-	clientSocket1.write("qwer")
+	setTimeout(()=>{clientSocket1.write("qwer"); console.log("send qwer")}, 1000)
+	//clientSocket1.write("qwer")
 }).on('data', data =>{
 	console.log(`client data. send from server: ${data}`)
 }).on('drain', ()=>{
@@ -20,6 +21,8 @@ clientSocket1
 }).on('timeout', ()=>{
 	console.log(`client timeout`)
 })
+
+
 
 setTimeout(()=>{
 	clientSocket1.end()

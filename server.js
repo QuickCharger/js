@@ -21,6 +21,9 @@ let CreateServer = () => {
 		}).on('timeout', ()=>{
 			console.log(`insocket timeout`)
 		})
+		inSocket.pause()		// pause后依旧会接收数据 但不会触发data事件。调用resume后才会触发data事件
+		console.log(`insocket pause`)
+		setTimeout(()=>{inSocket.resume(); console.log(`insocket resume`)}, 2000)
 	}).listen({host:"0.0.0.0", port:12345}, () => {
 		console.log(`server listen port ${12346} success`)
 	}).on("error", (e)=>{
