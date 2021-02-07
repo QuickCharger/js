@@ -47,3 +47,4 @@ client end方法 执行后会发送FIN包，comein会收到 1.end事件 2.close�
 client 意外中断后，comein会收到 1.error事件 2.close事件
 server close方法 主动调用后，不再接收新的comein，老的comein会保持
        close事件 在所有的comein都被关闭后会被触发
+详细参见 client.js server.js
