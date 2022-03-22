@@ -28,6 +28,8 @@ npm info pm2				// 查看pm2版本
 pm2自动启动
 pm2 save
 pm2 startup
+pm2 init	// 创建pm2启动文件ecosystem.config.js
+pm2 start ecosystem.config.js
 
 安装express
 准备工作
