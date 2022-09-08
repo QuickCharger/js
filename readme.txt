@@ -9,6 +9,14 @@ npm install 出现rollbackFailedOptional时执行以下操作
 	npm config rm https-proxy
 	npm config set registry http://registry.npmjs.org
 	npm config set registry https://registry.npm.taobao.org		-- 这个是淘宝的路径 能加快大陆速度
+
+	git config --global  --get http.proxy		-- 查看proxy
+	git config --global  --get https.proxy
+	git config --global --unset http.proxy		-- 清除proxy
+	git config --global --unset https.proxy
+	git config --global https.proxy  http://127.0.0.1:1234		-- 设定proxy
+	git config --global http.proxy  http://127.0.0.1:1234
+
 参考
 	https://stackoverflow.com/questions/46011546/npm-install-error-rollbackfailedoptional
 
