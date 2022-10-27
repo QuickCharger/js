@@ -1,0 +1,16 @@
+{
+  "name": "neomanage",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app_start.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "easy": "github:QuickCharger/easy",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3"
+  }
+}
