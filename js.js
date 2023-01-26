@@ -26,6 +26,42 @@ if (true) {
   console.log(a + " " + b + " " + c)
 }
 
+{
+	// 数据属性
+	let obj1 = {
+		ori: 'original'
+	}
+	Object.defineProperty(obj1, 'name', {
+		configurable: true,		// false 不能被delete
+		enumerable: true,		// true 允许遍历 for ... in
+		writable: true,			// false 值不能被修改
+		value: 'nameold',
+	})
+	obj1.name='newname'
+	for(let key in obj1) {
+		console.log(`${key} ${obj1[key]}`)
+	}
+	console.log(obj1)
+
+	// 访问器属性
+	let obj2 = {
+		ori: 'original',
+		_name: 'nameold',
+	}
+	Object.defineProperty(obj2, 'name', {
+		configurable: true,		// false 不能被delete
+		enumerable: true,		// true 允许遍历 for ... in
+		get: function() {return `name is ${this._name}`},	// 不能用es6的简写函数
+		set: function(a_name) {this._name = a_name},		// 不能用es6的简写函数
+	})
+	obj2.name='newname'
+	for(let key in obj2) {
+		console.log(`${key} ${obj2[key]}`)
+	}
+	console.log(obj2)
+}
+
+/*
 async函数实际返回Promise
 	如果返回的是非Promise也会通过Promise.resolve()封装成Promise
 	如果无return则自动返回Promise.resolve(undefined)
@@ -48,3 +84,4 @@ client 意外中断后，comein会收到 1.error事件 2.close事件
 server close方法 主动调用后，不再接收新的comein，老的comein会保持
        close事件 在所有的comein都被关闭后会被触发
 详细参见 client.js server.js
+*/
